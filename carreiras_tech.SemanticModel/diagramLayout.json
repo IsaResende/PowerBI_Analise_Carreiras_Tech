@@ -4,27 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
-        "y": 0
+        "x": 222.49267152647636,
+        "y": 18.855311146311557
       },
       "nodes": [
         {
           "location": {
-            "x": 0,
-            "y": 0
-          },
-          "nodeIndex": "tech_salary_dataset",
-          "nodeLineageTag": "6b2e2da3-1815-494b-b79d-fb5e02636932",
-          "size": {
-            "height": 493,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 434,
-            "y": 0
+            "x": 1450.7973562590239,
+            "y": 89.379896395782907
           },
           "nodeIndex": "fato_skills",
           "nodeLineageTag": "aca283e6-d476-4f23-963b-243998fad988",
@@ -33,10 +20,75 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 96.5
+          },
+          "nodeIndex": "dim_company",
+          "nodeLineageTag": "a3fbaac1-ab6a-46e5-bbfe-18e711f862b5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 96.5
+          },
+          "nodeIndex": "dim_employee",
+          "nodeLineageTag": "00bae21d-5af5-4211-bd5b-033f4c44a10e",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 568,
+            "y": 96.5
+          },
+          "nodeIndex": "dim_job",
+          "nodeLineageTag": "b72370ea-1f34-41a8-badf-58acea349878",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852,
+            "y": 96.5
+          },
+          "nodeIndex": "dim_location",
+          "nodeLineageTag": "9b1a10ce-1c6a-4194-9187-77f36d230f27",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136,
+            "y": 96.5
+          },
+          "nodeIndex": "dim_skills_profile",
+          "nodeLineageTag": "9036aaa4-ad5a-4bc6-a6d9-80ed4715d935",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "Todas as tabelas",
-      "zoomValue": 100,
+      "zoomValue": 79.553182037700154,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
