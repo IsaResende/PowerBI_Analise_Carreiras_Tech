@@ -1,6 +1,88 @@
 table fato_skills
 	lineageTag: aca283e6-d476-4f23-963b-243998fad988
 
+	measure Total_Funcionarios = COUNT(dim_employee[id_funcionario])
+		formatString: 0
+		lineageTag: 319cfde5-980d-47c7-b39f-ab2636ae9867
+
+	measure Media_Salario_USD = AVERAGE(fato_skills[salario_anual_usd])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: 8873c447-a7fe-4a8f-9e42-90ef4c79432e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Media_Bonus_USD = AVERAGE(fato_skills[bonus_anual_usd])
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: a5554092-683c-48fc-a4e9-a3ca6569d009
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Pct_Recebem_Equity =
+			
+			DIVIDE(
+			    CALCULATE(COUNT(fato_skills[dim_employee.id_funcionario]), fato_skills[quitado] = 1),
+			    [Total_Funcionarios],
+			    0
+			)
+		formatString: 0
+		lineageTag: c12ce212-2639-4e97-b9ca-daa4184a7c91
+
+	measure Gap_Salarial_Genero_Pct = ```
+			
+			DIVIDE(
+			    ([Media_Salario_Homens] - [Media_Salario_Mulheres]), 
+			    [Media_Salario_Homens], 
+			    0
+			)
+			```
+		lineageTag: bac04f1c-1ef8-4f1f-aacc-70437a5f00db
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Media_Salario_Homens = ```
+			
+			CALCULATE(
+			    [Media_Salario_USD], 
+			    dim_employee[genero] = "Masculino"
+			)
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: c0b3fc6d-25a0-48e7-8b48-0b8d56ade01b
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Media_Salario_Mulheres = ```
+			
+			CALCULATE(
+			    [Media_Salario_USD], 
+			    dim_employee[genero] = "Feminino"
+			)
+			```
+		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
+		lineageTag: c9f35807-01ff-4f3e-8a33-b711e9e76a0f
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure Media_Satisfacao = AVERAGE(fato_skills[pontuacao_satisfacao_trabalho])
+		lineageTag: b071d901-408f-4cb1-a0ea-71f76f4c79e9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Media_Horas_Extras = AVERAGE(fato_skills[horas_extras_por_mes])
+		lineageTag: 75937cf0-ace3-4143-93f7-ce52db36536b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Taxa_Busca_Ativa =
+			
+			DIVIDE(
+			    CALCULATE(COUNT(fato_skills[dim_employee.id_funcionario]), fato_skills[is_actively_looking] = 1),
+			    [Total_Funcionarios],
+			    0
+			)
+		formatString: 0
+		lineageTag: 58e2e270-8ce5-4710-a2f1-99cc15dd695e
+
 	column tempo_experiencia_total
 		dataType: int64
 		formatString: 0
