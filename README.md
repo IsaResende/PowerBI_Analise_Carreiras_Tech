@@ -1,13 +1,5 @@
 # Projeto Final: Análise de Fatores de Valorização Salarial em Tecnologia (carreiras_tech)
 
-## Disciplina: Business Intelligence II
-**Professor:** MsC Pedro H. Mello  
-**Data de Entrega:** 22/06/2026  
-**Formato de Entrega:** Solução de BI no formato .pbip (Power BI Project)  
-**Autores:** [Nome do Integrante 1] ([Email 1]) e [Nome do Integrante 2] ([Email 2])
-
----
-
 ## 1. Descrição do Projeto e Problema de Negócio Resumido
 
 Este projeto foi desenvolvido para a disciplina de Business Intelligence II com o objetivo de integrar os conceitos de modelagem dimensional, transformações em Power Query, cálculos em linguagem DAX, Row-Level Security (RLS) e versionamento em formato de código aberto (.pbip).
