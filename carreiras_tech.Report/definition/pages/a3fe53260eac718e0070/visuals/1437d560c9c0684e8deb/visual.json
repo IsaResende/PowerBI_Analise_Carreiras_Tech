@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "1437d560c9c0684e8deb",
   "position": {
     "x": 17.142857142857142,
@@ -39,7 +39,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_skills"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Media_Salario_USD"
@@ -58,7 +58,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_skills"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "Media_Salario_USD"

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "224e90c7714e5b915969",
   "position": {
     "x": 18.571428571428573,
@@ -39,7 +39,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_skills"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Media_Horas_Extras"
@@ -58,7 +58,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_skills"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "Media_Horas_Extras"

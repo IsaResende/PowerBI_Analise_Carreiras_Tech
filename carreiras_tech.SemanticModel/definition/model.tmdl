@@ -8,7 +8,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["fato_skills","CaminhoPC2","CaminhoPC1","QuemEstaUsando","dim_employee","dim_job","dim_location","dim_company","dim_skills_profile"]
+annotation PBI_QueryOrder = ["fato_skills","CaminhoPC2","CaminhoPC1","QuemEstaUsando","dim_employee","dim_job","dim_location","dim_company","dim_skills_profile","_Medidas"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -18,6 +18,8 @@ ref table dim_job
 ref table dim_location
 ref table dim_company
 ref table dim_skills_profile
+ref table _Medidas
+ref table dim_calendario
 
 ref cultureInfo pt-BR
 

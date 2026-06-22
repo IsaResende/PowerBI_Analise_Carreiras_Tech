@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "a87d2626604be407ba52",
   "position": {
-    "x": 681.42857142857144,
-    "y": 94.285714285714292,
+    "x": 693.59073359073363,
+    "y": 94.51737451737452,
     "z": 7000,
-    "height": 171.42857142857144,
-    "width": 255.71428571428572,
+    "height": 170.96525096525096,
+    "width": 241.85328185328186,
     "tabOrder": 7000
   },
   "visual": {
@@ -20,7 +20,7 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_skills"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Media_Salario_Mulheres"
@@ -40,7 +40,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_skills"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "Media_Salario_Mulheres"

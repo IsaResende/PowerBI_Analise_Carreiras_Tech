@@ -18,3 +18,7 @@ relationship AutoDetected_ea5ac123-9883-4caf-aa80-a536be72fdb4
 	fromColumn: fato_skills.'dim_skills_profile.id_perfil'
 	toColumn: dim_skills_profile.id_perfil
 
+relationship 2ae29dfa-e7f5-9c4b-5ff2-cf4c83ac2475
+	fromColumn: fato_skills.data_pesquisa
+	toColumn: dim_calendario.Date
+

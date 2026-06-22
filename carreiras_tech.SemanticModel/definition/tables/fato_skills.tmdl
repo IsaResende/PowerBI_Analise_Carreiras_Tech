@@ -1,88 +1,6 @@
 table fato_skills
 	lineageTag: aca283e6-d476-4f23-963b-243998fad988
 
-	measure Total_Funcionarios = COUNT(dim_employee[id_funcionario])
-		formatString: 0
-		lineageTag: 319cfde5-980d-47c7-b39f-ab2636ae9867
-
-	measure Media_Salario_USD = AVERAGE(fato_skills[salario_anual_usd])
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
-		lineageTag: 8873c447-a7fe-4a8f-9e42-90ef4c79432e
-
-		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
-
-	measure Media_Bonus_USD = AVERAGE(fato_skills[bonus_anual_usd])
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
-		lineageTag: a5554092-683c-48fc-a4e9-a3ca6569d009
-
-		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
-
-	measure Pct_Recebem_Equity =
-			
-			DIVIDE(
-			    CALCULATE(COUNT(fato_skills[dim_employee.id_funcionario]), fato_skills[quitado] = 1),
-			    [Total_Funcionarios],
-			    0
-			)
-		formatString: 0
-		lineageTag: c12ce212-2639-4e97-b9ca-daa4184a7c91
-
-	measure Gap_Salarial_Genero_Pct = ```
-			
-			DIVIDE(
-			    ([Media_Salario_Homens] - [Media_Salario_Mulheres]), 
-			    [Media_Salario_Homens], 
-			    0
-			)
-			```
-		lineageTag: bac04f1c-1ef8-4f1f-aacc-70437a5f00db
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure Media_Salario_Homens = ```
-			
-			CALCULATE(
-			    [Media_Salario_USD], 
-			    dim_employee[genero] = "Masculino"
-			)
-			```
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
-		lineageTag: c0b3fc6d-25a0-48e7-8b48-0b8d56ade01b
-
-		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
-
-	measure Media_Salario_Mulheres = ```
-			
-			CALCULATE(
-			    [Media_Salario_USD], 
-			    dim_employee[genero] = "Feminino"
-			)
-			```
-		formatString: "R$"\ #,0.###############;-"R$"\ #,0.###############;"R$"\ #,0.###############
-		lineageTag: c9f35807-01ff-4f3e-8a33-b711e9e76a0f
-
-		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
-
-	measure Media_Satisfacao = AVERAGE(fato_skills[pontuacao_satisfacao_trabalho])
-		lineageTag: b071d901-408f-4cb1-a0ea-71f76f4c79e9
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure Media_Horas_Extras = AVERAGE(fato_skills[horas_extras_por_mes])
-		lineageTag: 75937cf0-ace3-4143-93f7-ce52db36536b
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure Taxa_Busca_Ativa =
-			
-			DIVIDE(
-			    CALCULATE(COUNT(fato_skills[dim_employee.id_funcionario]), fato_skills[is_actively_looking] = 1),
-			    [Total_Funcionarios],
-			    0
-			)
-		formatString: 0
-		lineageTag: 58e2e270-8ce5-4710-a2f1-99cc15dd695e
-
 	column tempo_experiencia_total
 		dataType: int64
 		formatString: 0
@@ -424,6 +342,17 @@ table fato_skills
 
 		annotation SummarizationSetBy = Automatic
 
+	column data_pesquisa
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b095f20e-ac98-40ef-9809-570519651758
+		summarizeBy: none
+		sourceColumn: data_pesquisa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
 	partition fato_skills = m
 		mode: import
 		source = ```
@@ -515,9 +444,11 @@ table fato_skills
 				    #"dim_skills_profile Expandido" = Table.ExpandTableColumn(#"Consultas Mescladas6", "dim_skills_profile", {"id_perfil"}, {"dim_skills_profile.id_perfil"}),
 				    #"Colunas Reordenadas5" = Table.ReorderColumns(#"dim_skills_profile Expandido",{"dim_employee.id_funcionario", "dim_job.id_cargo", "dim_location.id_local", "dim_company.id_empresa", "dim_skills_profile.id_perfil", "tempo_experiencia_total", "anos_experiencia_na_area", "linguas", "skills.1", "skills.2", "skills.3", "skills.4", "skills.5", "skills.6", "skills.7", "skills.8", "primary_skill", "num_skills", "certificados.1", "certificados.2", "certificados.3", "salario_anual_usd", "salario_mensal_usd", "salario_por_hora_usd", "bonus_anual_usd", "bonus_percentual", "quitado", "valor_total_quitado_usd", "equity_vesting_years", "effective_tax_rate_pct", "taxa_anual_usd", "remuneracao_anual_liquida_usd", "remuneracao_mensal_liquida_usd", "despesas_mensais_moradia_usd", "despesas_mensais_transporte_usd", "despesas_mensais_alimentacao_usd", "despesas_mensais_servicos_basicos_usd", "despesas_mensais_plano_saude_usd", "despesas_mensais_entretenimento_usd", "despesas_mensal_credito_educativo_usd", "despesas_mensais_creche_baba_usd", "despesas_variadas_mensais_usd", "despesas_totais_mensais_usd", "despesas_totais_anuais_usd", "economia_anual_usd", "semana_de_ferias", "horas_extras_por_mes", "meses_desde_ultima_promocao", "quantidade_empresas_anteriores", "pontuacao_satisfacao_trabalho", "is_actively_looking"}),
 				    #"Colunas Removidas4" = Table.RemoveColumns(#"Colunas Reordenadas5",{"linguas", "skills.1", "skills.2", "skills.3", "skills.4", "skills.5", "skills.6", "skills.7", "skills.8", "primary_skill", "certificados.1", "certificados.2", "certificados.3"}),
-				    #"Linhas Classificadas" = Table.Sort(#"Colunas Removidas4",{{"dim_employee.id_funcionario", Order.Ascending}})
+				    #"Linhas Classificadas" = Table.Sort(#"Colunas Removidas4",{{"dim_employee.id_funcionario", Order.Ascending}}),
+				    #"Personalização Adicionada" = Table.AddColumn(#"Linhas Classificadas", "data_pesquisa", each #date(2023, 1, 1)),
+				    #"Tipo Alterado17" = Table.TransformColumnTypes(#"Personalização Adicionada",{{"data_pesquisa", type date}})
 				in
-				    #"Linhas Classificadas"
+				    #"Tipo Alterado17"
 				```
 
 	annotation PBI_NavigationStepName = Navegação

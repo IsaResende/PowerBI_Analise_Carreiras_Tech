@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "8e55b55670180ba0b200",
   "position": {
     "x": 970.00000000000011,
@@ -20,15 +20,14 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fato_skills"
+                      "Entity": "_Medidas"
                     }
                   },
                   "Property": "Gap_Salarial_Genero_Pct"
                 }
               },
-              "queryRef": "fato_skills.Gap_Salarial_Genero_Pct",
-              "nativeQueryRef": "Gap_Salarial_Genero_Pct",
-              "format": "0.00%;-0.00%;0.00%"
+              "queryRef": "_Medidas.Gap_Salarial_Genero_Pct",
+              "nativeQueryRef": "Gap_Salarial_Genero_Pct"
             }
           ]
         }
@@ -40,7 +39,7 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "fato_skills"
+                    "Entity": "_Medidas"
                   }
                 },
                 "Property": "Gap_Salarial_Genero_Pct"
